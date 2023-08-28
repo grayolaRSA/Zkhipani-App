@@ -6,12 +6,12 @@ from models.place import Place
 from models.user import User
 from models.activity import Activity
 from models import storage
-from api.v1.views import app_views
+from api.v1.pages import app_pages
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
 
-@app_views.route('/cities/<city_id>/places', methods=['GET'],
+@app_pages.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
 @swag_from('documentation/place/get_places.yml', methods=['GET'])
 def get_places(city_id):
@@ -28,7 +28,7 @@ def get_places(city_id):
     return jsonify(places)
 
 
-@app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
+@app_pages.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/place/get_place.yml', methods=['GET'])
 def get_place(place_id):
     """
@@ -41,7 +41,7 @@ def get_place(place_id):
     return jsonify(place.to_dict())
 
 
-@app_views.route('/places/<place_id>', methods=['DELETE'],
+@app_pages.route('/places/<place_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/place/delete_place.yml', methods=['DELETE'])
 def delete_place(place_id):
@@ -60,7 +60,7 @@ def delete_place(place_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/cities/<city_id>/places', methods=['POST'],
+@app_pages.route('/cities/<city_id>/places', methods=['POST'],
                  strict_slashes=False)
 @swag_from('documentation/place/post_place.yml', methods=['POST'])
 def post_place(city_id):
@@ -93,7 +93,7 @@ def post_place(city_id):
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
+@app_pages.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/place/put_place.yml', methods=['PUT'])
 def put_place(place_id):
     """
@@ -117,7 +117,7 @@ def put_place(place_id):
     return make_response(jsonify(place.to_dict()), 200)
 
 
-@app_views.route('/places_search', methods=['POST'], strict_slashes=False)
+@app_pages.route('/places_search', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/place/post_search.yml', methods=['POST'])
 def places_search():
     """
