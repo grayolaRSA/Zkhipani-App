@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ objects that handles all default RestFul API actions for Activity types"""
-from models.activity_types import Activity_Type
+from models.activity_type import Activity_Type
 from models import storage
 from api.v1.pages import app_pages
 from flask import abort, jsonify, make_response, request
