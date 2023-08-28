@@ -5,6 +5,7 @@ Contains the class DBStorage
 
 import models
 from models.activity import Activity
+from models.activity_type import Activity_Type
 from models.base_model import BaseModel, Base
 from models.city import City
 from models.place import Place
@@ -17,7 +18,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Activity": Activity, "City": City,
+classes = {"Activity": Activity, "Activity_Type": Activity_Type, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
