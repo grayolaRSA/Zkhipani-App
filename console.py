@@ -4,11 +4,11 @@
 import cmd
 from datetime import datetime
 import models
-from models.activities import Activity #formerly Amenity in Airbnb model
+from models.activity import Activity  # formerly Amenity in Airbnb model
 from models.base_model import BaseModel
 from models.place import Place
 from models.review import Review
-from models.state import State #will be changed to Province once new dataset obtained
+from models.state import State  # will be changed to Province in new dataset
 from models.city import City
 from models.user import User
 import shlex  # for splitting the line along spaces except in double quotes
@@ -159,6 +159,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

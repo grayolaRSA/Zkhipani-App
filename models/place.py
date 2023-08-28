@@ -14,7 +14,7 @@ if models.storage_t == 'db':
                                             ondelete='CASCADE'),
                                  primary_key=True),
                           Column('amenity_id', String(60),
-                                 ForeignKey('amenities.id', onupdate='CASCADE',
+                                 ForeignKey('activities.id', onupdate='CASCADE',
                                             ondelete='CASCADE'),
                                  primary_key=True))
 
@@ -36,8 +36,8 @@ class Place(BaseModel, Base):
         reviews = relationship("Review",
                                backref="place",
                                cascade="all, delete, delete-orphan")
-        amenities = relationship("Amenity",
-                                 secondary=place_amenity,
+        activities = relationship("Activity",
+                                 secondary=place_activity,
                                  viewonly=False)
     else:
         city_id = ""
@@ -50,7 +50,7 @@ class Place(BaseModel, Base):
         price_by_night = 0
         latitude = 0.0
         longitude = 0.0
-        amenity_ids = []
+        activity_ids = []
 
     def __init__(self, *args, **kwargs):
         """initializes Place"""
@@ -69,12 +69,12 @@ class Place(BaseModel, Base):
             return review_list
 
         @property
-        def amenities(self):
-            """getter attribute returns the list of Amenity instances"""
-            from models.amenity import Amenity
-            amenity_list = []
-            all_amenities = models.storage.all(Amenity)
-            for amenity in all_amenities.values():
-                if amenity.place_id == self.id:
-                    amenity_list.append(amenity)
-            return amenity_list
+        def activities(self):
+            """getter attribute returns the list of Activity instances"""
+            from models.activity import Activity
+            activity_list = []
+            all_activities = models.storage.all(Activity)
+            for activity in all_activities.values():
+                if activity.place_id == self.id:
+                    activity_list.append(activity)
+            return activity_list

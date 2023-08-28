@@ -14,7 +14,7 @@ from models.state import State
 from models.user import User
 from hashlib import md5
 
-classes = {"Amenity": Activity, "BaseModel": BaseModel, "City": City,
+classes = {"Activity": Activity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
