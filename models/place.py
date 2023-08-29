@@ -8,12 +8,12 @@ from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
 if models.storage_t == 'db':
-    place_amenity = Table('place_amenity', Base.metadata,
+    place_activity = Table('place_activity', Base.metadata,
                           Column('place_id', String(60),
                                  ForeignKey('places.id', onupdate='CASCADE',
                                             ondelete='CASCADE'),
                                  primary_key=True),
-                          Column('amenity_id', String(60),
+                          Column('activity_id', String(60),
                                  ForeignKey('activities.id', onupdate='CASCADE',
                                             ondelete='CASCADE'),
                                  primary_key=True))
