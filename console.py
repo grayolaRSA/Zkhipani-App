@@ -17,9 +17,9 @@ classes = {"Activity": Activity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
-class HBNBCommand(cmd.Cmd):
-    """ HBNH console """
-    prompt = '(hbnb) '
+class ZKHPCommand(cmd.Cmd):
+    """ Zkhipani console """
+    prompt = '(zkhp) '
 
     def do_EOF(self, arg):
         """Exits console"""
@@ -162,4 +162,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    ZKHPCommand().cmdloop()

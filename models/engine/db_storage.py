@@ -29,17 +29,17 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        ZKHP_MYSQL_USER = getenv('ZKHP_MYSQL_USER')
+        ZKHP_MYSQL_PWD = getenv('ZKHP_MYSQL_PWD')
+        ZKHP_MYSQL_HOST = getenv('ZKHP_MYSQL_HOST')
+        ZKHP_MYSQL_DB = getenv('ZKHP_MYSQL_DB')
+        ZKHP_ENV = getenv('ZKHP_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
-        if HBNB_ENV == "test":
+                                      format(ZKHP_MYSQL_USER,
+                                             ZKHP_MYSQL_PWD,
+                                             ZKHP_MYSQL_HOST,
+                                             ZKHP_MYSQL_DB))
+        if ZKHP_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
