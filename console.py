@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" console """
+""" Zkhiphani console module """
 
 import cmd
 from datetime import datetime
