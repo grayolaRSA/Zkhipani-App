@@ -22,7 +22,7 @@ def get_place_activities(place_id):
     if not place:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('ZKHP_TYPE_STORAGE') == "db":
         activities = [activity.to_dict() for activity in place.activities]
     else:
         activities = [storage.get(Activity, activity_id).to_dict()
@@ -49,7 +49,7 @@ def delete_place_activity(place_id, activity_id):
     if not activity:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('ZKHP_TYPE_STORAGE') == "db":
         if activity not in place.activities:
             abort(404)
         place.activities.remove(activity)
@@ -80,7 +80,7 @@ def post_place_activity(place_id, activity_id):
     if not activity:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('ZKHP_TYPE_STORAGE') == "db":
         if activity in place.activities:
             return make_response(jsonify(activity.to_dict()), 200)
         else:
