@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Repages """
+""" objects that handle all default RestFul API actions for Reviews """
 from models.review import Review
 from models.place import Place
 from models.user import User
@@ -23,11 +23,11 @@ def get_repages(place_id):
 
     repages = [review.to_dict() for review in place.repages]
 
-    return jsonify(repages)
+    return jsonify(reviews)
 
 
 @app_pages.route('/repages/<review_id>', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/repages/get_review.yml', methods=['GET'])
+@swag_from('documentation/reviews/get_review.yml', methods=['GET'])
 def get_review(review_id):
     """
     Retrieves a Review object
@@ -39,7 +39,7 @@ def get_review(review_id):
     return jsonify(review.to_dict())
 
 
-@app_pages.route('/repages/<review_id>', methods=['DELETE'],
+@app_pages.route('/reviews/<review_id>', methods=['DELETE'],
                  strict_slashes=False)
 @swag_from('documentation/repages/delete_repages.yml', methods=['DELETE'])
 def delete_review(review_id):
@@ -58,9 +58,9 @@ def delete_review(review_id):
     return make_response(jsonify({}), 200)
 
 
-@app_pages.route('/places/<place_id>/repages', methods=['POST'],
+@app_pages.route('/places/<place_id>/reviews', methods=['POST'],
                  strict_slashes=False)
-@swag_from('documentation/repages/post_repages.yml', methods=['POST'])
+@swag_from('documentation/repages/post_reviews.yml', methods=['POST'])
 def post_review(place_id):
     """
     Creates a Review
@@ -91,8 +91,8 @@ def post_review(place_id):
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_pages.route('/repages/<review_id>', methods=['PUT'], strict_slashes=False)
-@swag_from('documentation/repages/put_repages.yml', methods=['PUT'])
+@app_pages.route('/reviews/<review_id>', methods=['PUT'], strict_slashes=False)
+@swag_from('documentation/reviews/put_reviews.yml', methods=['PUT'])
 def put_review(review_id):
     """
     Updates a Review
