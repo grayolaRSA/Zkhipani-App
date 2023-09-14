@@ -16,7 +16,8 @@ if models.storage_t == 'db':
                           Column('activity_id', String(60),
                                  ForeignKey('activities.id', onupdate='CASCADE',
                                             ondelete='CASCADE'),
-                                 primary_key=True))
+                                 primary_key=True),
+                          mysql_charset="latin1")
 
 
 class Place(BaseModel, Base):
