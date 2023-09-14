@@ -12,6 +12,8 @@ class Activity_Type(BaseModel, Base):
     """Representation of Activity Type"""
     if models.storage_t == 'db':
         __tablename__ = 'activity_type'
+          __table_args__ = (
+            {'mysql_default_charset': 'latin1'})
         name = Column(String(128), nullable=True)
     else:
         name = ""
