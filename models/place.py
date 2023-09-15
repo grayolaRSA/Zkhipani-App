@@ -9,22 +9,23 @@ from sqlalchemy.orm import relationship
 
 if models.storage_t == 'db':
     place_activity = Table('place_activity', Base.metadata,
-                          Column('place_id', String(60),
-                                 ForeignKey('places.id', onupdate='CASCADE',
-                                            ondelete='CASCADE'),
-                                 primary_key=True),
-                          Column('activity_id', String(60),
-                                 ForeignKey('activities.id', onupdate='CASCADE',
-                                            ondelete='CASCADE'),
-                                 primary_key=True),
-                          mysql_charset="latin1")
+                           Column('place_id', String(60),
+                                  ForeignKey('places.id', onupdate='CASCADE',
+                                             ondelete='CASCADE'),
+                                  primary_key=True),
+                           Column('activity_id', String(60),
+                                  ForeignKey('activities.id',
+                                             onupdate='CASCADE',
+                                             ondelete='CASCADE'),
+                                  primary_key=True),
+                           mysql_charset="latin1")
 
 
 class Place(BaseModel, Base):
     """Representation of Place """
     if models.storage_t == 'db':
         __tablename__ = 'places'
-          __table_args__ = (
+        __table_args__ = (
             {'mysql_default_charset': 'latin1'})
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
@@ -40,8 +41,8 @@ class Place(BaseModel, Base):
                                backref="place",
                                cascade="all, delete, delete-orphan")
         activities = relationship("Activity",
-                                 secondary=place_activity,
-                                 viewonly=False)
+                                  secondary=place_activity,
+                                  viewonly=False)
     else:
         city_id = ""
         user_id = ""
